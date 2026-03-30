@@ -1,0 +1,30 @@
+class Language {
+  protected String name;
+  protected int numSpeakers;
+  protected String regionsSpoken;
+  protected String wordOrder;
+
+  public Language(String langName, int speakers, String regions, String wOrder) {
+    this.name = langName;
+    this.numSpeakers = speakers;
+    this.regionsSpoken = regions;
+    this.wordOrder = wOrder;
+  }
+
+  public void getInfo() {
+    System.out.println(this.name + " is spoken by " + this.numSpeakers + " people mainly in " + this.regionsSpoken + ". The language follows the word order: " + this.wordOrder + ".");
+  }
+
+  public static void main(String[] args) {
+    Language harkonnen = new Language("Harkonnen", 10000000, "Geidi Prime", "subject-verb-object");
+    harkonnen.getInfo();
+
+    Language quetzel = new Mayan("Quetzel", 50000);
+    quetzel.getInfo();
+
+    Language chinese = new SinoTibetan("Chinese", 100);
+    chinese.getInfo();
+
+
+  }
+}
