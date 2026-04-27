@@ -1,42 +1,66 @@
-// Import statement:
 import java.util.ArrayList;
 
-class PrimeDirective {
-  
-  // Add your methods here:
-  public boolean isPrime(int number) {
-    
-    if (number > 1) {
-      for (int i = 2; i < number; i++) {
-        if (number % i == 0) {
-          return false; 
+/**
+ * PrimeDirective program.
+ *
+ * Contains methods to check if a number is prime
+ * and to filter a list of numbers to only primes.
+ */
+public class PrimeDirective {
+
+    /**
+     * Checks if a number is prime.
+     *
+     * @param number the number to check
+     * @return true if the number is prime, false otherwise
+     */
+    public boolean isPrime(int number) {
+
+        // Numbers less than or equal to 1 are not prime
+        if (number <= 1) {
+            return false;
         }
-      }
-      return true;
-    } else {
-      return false;
+
+        // Check for divisors from 2 up to number - 1
+        for (int i = 2; i < number; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
-  }
 
-  public ArrayList<Integer> onlyPrimes(int[] numbers) {
-    ArrayList<Integer> primes = new ArrayList<Integer>();
-    for (int number : numbers) {
-      if (isPrime(number)) {
-        primes.add(number);
-      
-      }
+    /**
+     * Filters an array and returns only the prime numbers.
+     *
+     * @param numbers array of integers
+     * @return ArrayList containing only prime numbers
+     */
+    public ArrayList<Integer> onlyPrimes(int[] numbers) {
+
+        ArrayList<Integer> primes = new ArrayList<>();
+
+        // Loop through each number in the array
+        for (int number : numbers) {
+            if (isPrime(number)) {
+                primes.add(number);
+            }
+        }
+
+        return primes;
     }
-    return primes;
-  }
 
+    public static void main(String[] args) {
 
-  public static void main(String[] args) {
+        PrimeDirective pd = new PrimeDirective();
 
-    PrimeDirective pd = new PrimeDirective();
-    int[] numbers = {6, 29, 28, 33, 11, 100, 101, 43, 89};
-  
-    System.out.println(pd.isPrime(7));
-    System.out.println(pd.onlyPrimes(numbers));
+        int[] numbers = {6, 29, 28, 33, 11, 100, 101, 43, 89};
 
-  }  
+        // Test isPrime method
+        System.out.println(pd.isPrime(7));
+
+        // Print only prime numbers from the array
+        System.out.println(pd.onlyPrimes(numbers));
+    }
 }
