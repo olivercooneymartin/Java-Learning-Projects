@@ -1,42 +1,66 @@
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-class Playlist {
-  public static void main(String[] args) {
-    String[] favoriteSongs = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j"};
-    
-    System.out.println(favoriteSongs[0]);
-    System.out.println(favoriteSongs[1]);
-    System.out.println(favoriteSongs[2]);
+/**
+ * Demonstrates basic playlist management using arrays and ArrayLists.
+ *
+ * This program creates a list of favorite songs, prints selected songs,
+ * builds a smaller "desert island" playlist, combines playlists, removes
+ * extra songs, and demonstrates how to swap songs within an ArrayList.
+ */
+public class Playlist {
 
-    ArrayList<String> desertIsland = new ArrayList<String>();
+    /**
+     * Entry point for the playlist demonstration program.
+     *
+     * @param args command-line arguments (not used)
+     */
+    public static void main(String[] args) {
 
-    desertIsland.add("rek");
-    desertIsland.add("dak");
-    desertIsland.add("ren");
-    desertIsland.add("mal");
-    desertIsland.add("lea");
+        // Stores a fixed collection of favorite songs.
+        String[] favoriteSongs = {
+                "a", "b", "c", "d", "e",
+                "f", "g", "h", "i", "j"
+        };
 
-    desertIsland.addAll(Arrays.asList(favoriteSongs));
+        // Display the first three favorite songs.
+        System.out.println(favoriteSongs[0]);
+        System.out.println(favoriteSongs[1]);
+        System.out.println(favoriteSongs[2]);
 
-    System.out.println(desertIsland.size());
+        // Create a smaller playlist of essential songs.
+        List<String> desertIsland = new ArrayList<>();
 
-    desertIsland.subList(5, 15).clear();
+        desertIsland.add("rek");
+        desertIsland.add("dak");
+        desertIsland.add("ren");
+        desertIsland.add("mal");
+        desertIsland.add("lea");
 
-    System.out.println(desertIsland.size());
+        // Add all favorite songs to the desert island playlist.
+        desertIsland.addAll(Arrays.asList(favoriteSongs));
 
-    System.out.println(desertIsland);
+        System.out.println("Playlist size after adding favorite songs: " + desertIsland.size());
 
-    int songA = desertIsland.indexOf("rek");
-    int songB = desertIsland.indexOf("dak");
+        // Remove the songs that were added from favoriteSongs.
+        desertIsland.subList(5, desertIsland.size()).clear();
 
-    String tempA = "Song A";
+        System.out.println("Playlist size after trimming: " + desertIsland.size());
+        System.out.println("Current playlist: " + desertIsland);
 
-    desertIsland.set(songB, "Song A"); 
+        // Find the positions of two songs to swap.
+        int songAIndex = desertIsland.indexOf("rek");
+        int songBIndex = desertIsland.indexOf("dak");
 
+        // Swap the two songs if both exist in the playlist.
+        if (songAIndex != -1 && songBIndex != -1) {
+            String tempSong = desertIsland.get(songAIndex);
 
+            desertIsland.set(songAIndex, desertIsland.get(songBIndex));
+            desertIsland.set(songBIndex, tempSong);
+        }
 
-
-  }
-  
+        System.out.println("Playlist after swap: " + desertIsland);
+    }
 }
