@@ -1,11 +1,27 @@
-import.java.util.Serializable;
+import java.io.Serializable;
 
-
+/**
+ * Represents a pair of shoes, a specific type of armour.
+ *
+ * This class extends the Armour class without introducing new behavior,
+ * but exists to define a distinct equipment type for footwear. This allows
+ * for future expansion, such as movement bonuses, terrain effects, or
+ * other shoe-specific mechanics.
+ *
+ * Implements Serializable to support saving and loading game state.
+ */
 public class Shoe extends Armour implements Serializable {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  public Shoe(String name, int durability, int defenseRating) {
-    super(name, durability, defenseRating);
-  }
+    /**
+     * Constructs a new Shoe object.
+     *
+     * @param name           the name of the shoes
+     * @param durability     the starting durability (expected 0–100)
+     * @param defenseRating  the base defense rating at full durability
+     */
+    public Shoe(String name, int durability, int defenseRating) {
+        super(name, durability, defenseRating);
+    }
 }
