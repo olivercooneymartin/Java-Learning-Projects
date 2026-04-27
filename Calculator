@@ -1,32 +1,89 @@
+/**
+ * Provides basic arithmetic operations.
+ *
+ * This utility class supports common mathematical operations such as
+ * addition, subtraction, multiplication, division, and modulo.
+ */
 public class Calculator {
 
-  public Calculator() {
+    /**
+     * Private constructor to prevent instantiation of this utility class.
+     * All methods are static and should be accessed directly.
+     */
+    private Calculator() {
+        // Utility class
+    }
 
-  }
+    /**
+     * Adds two integers.
+     *
+     * @param a the first operand
+     * @param b the second operand
+     * @return the sum of a and b
+     */
+    public static int add(int a, int b) {
+        return a + b;
+    }
 
-  public int add(int a, int b) {
-    return a + b;
-  }
+    /**
+     * Subtracts one integer from another.
+     *
+     * @param a the first operand
+     * @param b the value to subtract from a
+     * @return the result of a - b
+     */
+    public static int subtract(int a, int b) {
+        return a - b;
+    }
 
-  public int subtract(int a, int b) {
-    return a - b;
-  }
+    /**
+     * Multiplies two integers.
+     *
+     * @param a the first operand
+     * @param b the second operand
+     * @return the product of a and b
+     */
+    public static int multiply(int a, int b) {
+        return a * b;
+    }
 
-  public int multiply(int a, int b) {
-    return a * b;
-  }
+    /**
+     * Divides one integer by another.
+     *
+     * @param a the dividend
+     * @param b the divisor (must not be zero)
+     * @return the result of integer division
+     * @throws ArithmeticException if b is zero
+     */
+    public static int divide(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Division by zero is not allowed.");
+        }
+        return a / b;
+    }
 
-  public int divide(int a, int b){ 
-    return a / b;
-  }
+    /**
+     * Computes the remainder of division (modulo).
+     *
+     * @param a the dividend
+     * @param b the divisor (must not be zero)
+     * @return the remainder of a divided by b
+     * @throws ArithmeticException if b is zero
+     */
+    public static int modulo(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Modulo by zero is not allowed.");
+        }
+        return a % b;
+    }
 
-  public int modulo(int a, int b) {
-    return a % b;
-  }
-  public static void main(String[] args) {
-    Calculator myCalculator = new Calculator();
-    System.out.println(myCalculator.add(5, 7));
-    System.out.println(myCalculator.subtract(45, 11));
-  }
-
+    /**
+     * Entry point for testing the Calculator functionality.
+     *
+     * @param args command-line arguments (not used)
+     */
+    public static void main(String[] args) {
+        System.out.println(Calculator.add(5, 7));
+        System.out.println(Calculator.subtract(45, 11));
+    }
 }
