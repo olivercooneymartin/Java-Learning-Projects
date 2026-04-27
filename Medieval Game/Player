@@ -1,142 +1,114 @@
 import java.io.Serializable;
 
 /**
- * Represents the player character in the game.
+ * This class represents the player in the game.
  *
- * The Player class manages core player attributes such as health,
- * equipped weapon, and equipped armour. It also handles combat-related
- * calculations like damage taken and total defense rating.
- *
- * Implements Serializable to allow saving and loading player state.
+ * The player has health, a weapon, and some armour.
  */
 public class Player implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /** The player's name (immutable after creation). */
+    // Player name
     private final String name;
 
-    /** The player's current health (0–100). */
+    // Player health (starts at 100)
     private double health;
 
-    /** The weapon currently equipped by the player. */
+    // Current weapon
     private Weapon currentWeapon;
 
-    /** Equipped armour pieces (may be null if not equipped). */
+    // Armour pieces (can be null if not equipped)
     private Helmet helmet;
     private Shirt shirt;
     private Trouser trouser;
     private Shoe shoe;
 
-    /**
-     * Constructs a new Player with a default weapon and full health.
-     *
-     * @param name the player's name
-     */
+    // Constructor
     public Player(String name) {
         this.name = name;
         this.currentWeapon = new Weapon("Rusty Short Sword", 3);
         this.health = 100;
     }
 
-    /**
-     * Applies incoming damage to the player after factoring in defense.
-     *
-     * @param enemyAttack the raw attack value from an enemy
-     */
+    // Called when the player takes damage
     public void takeDamage(double enemyAttack) {
+
+        // Reduce damage based on defense
         double damage = enemyAttack - (getDefenseRating() / 5.0);
 
-        // Prevent negative damage (healing from attacks)
+        // Make sure damage is not negative
         if (damage < 0) {
             damage = 0;
         }
 
-        this.health -= damage;
+        health -= damage;
 
-        if (this.health <= 0) {
-            this.health = 0;
-            System.out.println("You have succumbed to the enemy. Better luck next time.");
+        // Check if player is dead
+        if (health <= 0) {
+            health = 0;
+            System.out.println("You died. Game over.");
             System.exit(1);
         } else {
-            System.out.println("Current Health: " + this.health);
+            System.out.println("Health: " + health);
         }
     }
 
-    /**
-     * Heals the player by a specified amount, capped at 100.
-     *
-     * @param healthToAdd the amount of health to restore
-     */
-    public void heal(double healthToAdd) {
-        this.health += healthToAdd;
+    // Heals the player
+    public void heal(double amount) {
+        health += amount;
 
-        if (this.health > 100) {
-            this.health = 100;
+        // Cap health at 100
+        if (health > 100) {
+            health = 100;
         }
     }
 
-    /**
-     * @return the player's name
-     */
+    // Returns player name
     public String getName() {
         return name;
     }
 
-    /**
-     * Returns a formatted description of the currently equipped weapon.
-     *
-     * @return weapon description string
-     */
+    // Returns info about the current weapon
     public String getCurrentWeapon() {
-        return "Currently wielding: " +
+        return "Weapon: " +
                 currentWeapon.getName() +
-                ". This weapon does " +
-                currentWeapon.getDamage() +
-                " damage.\n";
+                " (Damage: " +
+                currentWeapon.getDamage() + ")\n";
     }
 
-    /**
-     * Sets the player's current weapon.
-     *
-     * @param currentWeapon the weapon to equip
-     */
-    public void setCurrentWeapon(Weapon currentWeapon) {
-        this.currentWeapon = currentWeapon;
+    // Sets a new weapon
+    public void setCurrentWeapon(Weapon weapon) {
+        this.currentWeapon = weapon;
     }
 
-    /**
-     * @return the player's current health
-     */
+    // Returns current health
     public double getHealth() {
         return health;
     }
 
-    /**
-     * Calculates total defense rating from all equipped armour pieces.
-     * Safely handles unequipped (null) armour.
-     *
-     * @return total defense rating
-     */
+    // Adds up defense from all armour pieces
     public int getDefenseRating() {
-        int totalDefense = 0;
+
+        int total = 0;
 
         if (helmet != null) {
-            totalDefense += helmet.getDefenseRating();
+            total += helmet.getDefenseRating();
         }
         if (shirt != null) {
-            totalDefense += shirt.getDefenseRating();
+            total += shirt.getDefenseRating();
         }
         if (trouser != null) {
-            totalDefense += trouser.getDefenseRating();
+            total += trouser.getDefenseRating();
         }
         if (shoe != null) {
-            totalDefense += shoe.getDefenseRating();
+            total += shoe.getDefenseRating();
         }
 
-        return totalDefense;
+        return total;
     }
 
+    // Getters and setters for armour
     public Helmet getHelmet() {
         return helmet;
     }
@@ -169,18 +141,14 @@ public class Player implements Serializable {
         this.shoe = shoe;
     }
 
-    /**
-     * Returns a formatted summary of the player's current state.
-     *
-     * @return player information string
-     */
+    // Prints player info
     @Override
     public String toString() {
-        return "\nCurrent Player:\n" +
+        return "\nPlayer:\n" +
                 "Name: " + name + "\n" +
-                "Health: " + getHealth() + "\n" +
+                "Health: " + health + "\n" +
                 getCurrentWeapon() +
-                "Equipped Armour:\n" +
+                "Armour:\n" +
                 "   Helmet: " + (helmet != null ? helmet : "None") +
                 "   Shirt: " + (shirt != null ? shirt : "None") +
                 "   Trousers: " + (trouser != null ? trouser : "None") +
