@@ -1,25 +1,16 @@
 import java.io.Serializable;
 
 /**
- * Represents a helmet, a specific type of armour.
+ * This class represents a helmet.
  *
- * This class extends the Armour class without adding new behavior,
- * but exists to allow for type distinction and future specialization
- * (e.g., helmet-specific effects, bonuses, or restrictions).
- *
- * Implements Serializable to support saving and loading game state.
+ * It extends the Armour class, so it has all the same
+ * properties like durability and defense.
  */
 public class Helmet extends Armour implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * Constructs a new Helmet object.
-     *
-     * @param name           the name of the helmet
-     * @param durability     the starting durability (expected 0–100)
-     * @param defenseRating  the base defense rating at full durability
-     */
+    // Constructor for creating a helmet
     public Helmet(String name, int durability, int defenseRating) {
         super(name, durability, defenseRating);
     }
