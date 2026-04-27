@@ -1,89 +1,60 @@
 /**
- * Provides basic arithmetic operations.
+ * Simple calculator program.
  *
- * This utility class supports common mathematical operations such as
- * addition, subtraction, multiplication, division, and modulo.
+ * This class has basic math functions like add, subtract,
+ * multiply, divide, and modulo.
  */
 public class Calculator {
 
-    /**
-     * Private constructor to prevent instantiation of this utility class.
-     * All methods are static and should be accessed directly.
-     */
-    private Calculator() {
-        // Utility class
-    }
-
-    /**
-     * Adds two integers.
-     *
-     * @param a the first operand
-     * @param b the second operand
-     * @return the sum of a and b
-     */
-    public static int add(int a, int b) {
+    // Adds two numbers together
+    public int add(int a, int b) {
         return a + b;
     }
 
-    /**
-     * Subtracts one integer from another.
-     *
-     * @param a the first operand
-     * @param b the value to subtract from a
-     * @return the result of a - b
-     */
-    public static int subtract(int a, int b) {
+    // Subtracts b from a
+    public int subtract(int a, int b) {
         return a - b;
     }
 
-    /**
-     * Multiplies two integers.
-     *
-     * @param a the first operand
-     * @param b the second operand
-     * @return the product of a and b
-     */
-    public static int multiply(int a, int b) {
+    // Multiplies two numbers
+    public int multiply(int a, int b) {
         return a * b;
     }
 
-    /**
-     * Divides one integer by another.
-     *
-     * @param a the dividend
-     * @param b the divisor (must not be zero)
-     * @return the result of integer division
-     * @throws ArithmeticException if b is zero
-     */
-    public static int divide(int a, int b) {
+    // Divides a by b
+    public int divide(int a, int b) {
+
+        // Check to make sure we are not dividing by 0
         if (b == 0) {
-            throw new ArithmeticException("Division by zero is not allowed.");
+            System.out.println("Cannot divide by zero!");
+            return 0;
         }
+
         return a / b;
     }
 
-    /**
-     * Computes the remainder of division (modulo).
-     *
-     * @param a the dividend
-     * @param b the divisor (must not be zero)
-     * @return the remainder of a divided by b
-     * @throws ArithmeticException if b is zero
-     */
-    public static int modulo(int a, int b) {
+    // Finds the remainder when a is divided by b
+    public int modulo(int a, int b) {
+
+        // Check to make sure we are not dividing by 0
         if (b == 0) {
-            throw new ArithmeticException("Modulo by zero is not allowed.");
+            System.out.println("Cannot use modulo with zero!");
+            return 0;
         }
+
         return a % b;
     }
 
-    /**
-     * Entry point for testing the Calculator functionality.
-     *
-     * @param args command-line arguments (not used)
-     */
     public static void main(String[] args) {
-        System.out.println(Calculator.add(5, 7));
-        System.out.println(Calculator.subtract(45, 11));
+
+        // Create a calculator object
+        Calculator calc = new Calculator();
+
+        // Test the methods
+        System.out.println("Add: " + calc.add(5, 7));
+        System.out.println("Subtract: " + calc.subtract(45, 11));
+        System.out.println("Multiply: " + calc.multiply(3, 4));
+        System.out.println("Divide: " + calc.divide(20, 5));
+        System.out.println("Modulo: " + calc.modulo(10, 3));
     }
 }
