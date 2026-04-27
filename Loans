@@ -1,23 +1,44 @@
+/**
+ * Simple car loan calculator.
+ *
+ * Calculates the estimated monthly payment based on
+ * loan amount, loan length, interest rate, and down payment.
+ */
 public class CarLoan {
-	public static void main(String[] args) {
-    int carLoan = 10000;
-    int loanLength = 3;
-    int interestRate = 5;
-    int downPayment = 2000;
 
-    if (loanLength <= 0 || interestRate <= 0) {
-      System.out.println("Error! You must take out a valid car loan.");
-    } else if (downPayment >= carLoan) {
-      System.out.println("The car can be paid in full.");
-    } else {
-      int remainingBalance = carLoan - downPayment;
-      int months = loanLength * 12;
-      int monthlyBalance = remainingBalance / months;
-      int interest = (monthlyBalance * interestRate) / 100;
-      int monthlyPayment = monthlyBalance + interest;
-      System.out.println(monthlyPayment);
+    public static void main(String[] args) {
+
+        int carLoan = 10000;
+        int loanLength = 3;     // in years
+        int interestRate = 5;   // percentage
+        int downPayment = 2000;
+
+        // Check for invalid loan values
+        if (loanLength <= 0 || interestRate <= 0) {
+            System.out.println("Error! You must take out a valid car loan.");
+
+        // If the down payment covers the whole loan
+        } else if (downPayment >= carLoan) {
+            System.out.println("The car can be paid in full.");
+
+        } else {
+
+            // Calculate remaining balance after down payment
+            int remainingBalance = carLoan - downPayment;
+
+            // Convert loan length to months
+            int months = loanLength * 12;
+
+            // Monthly payment before interest
+            int monthlyBalance = remainingBalance / months;
+
+            // Monthly interest amount
+            int interest = (monthlyBalance * interestRate) / 100;
+
+            // Final monthly payment
+            int monthlyPayment = monthlyBalance + interest;
+
+            System.out.println("Estimated monthly payment: " + monthlyPayment);
+        }
     }
-	
-
-	}
 }
