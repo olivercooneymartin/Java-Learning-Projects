@@ -1,23 +1,13 @@
 /**
- * Stores and displays ASCII art used by the game.
+ * This class is used to print ASCII art for the game.
  *
- * This class currently provides the game's home screen artwork.
- * The class is not intended to be instantiated, since it only contains
- * static utility methods.
+ * Right now it just shows the home screen.
  */
-public final class Art {
+public class Art {
 
-    /**
-     * Private constructor to prevent instantiation of this utility class.
-     */
-    private Art() {
-        // Utility class
-    }
-
-    /**
-     * Displays the game's home screen ASCII art.
-     */
+    // Prints the game's home screen art
     public static void homeScreen() {
+
         System.out.println("""
 
                    __                                                        __
