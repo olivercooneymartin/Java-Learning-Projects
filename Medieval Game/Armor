@@ -1,93 +1,68 @@
 import java.io.Serializable;
 
 /**
- * Represents a piece of armour in the game.
- * 
- * This class models an armour item with a name, durability, and base defense rating.
- * The effective defense rating scales with durability, and the armour can degrade
- * over time or be repaired up to a maximum durability of 100.
- * 
- * Implements Serializable to allow armour objects to be saved and loaded.
+ * This class represents a piece of armour in the game.
+ *
+ * Armour has a name, durability, and a defense rating.
+ * As durability goes down, the defense also becomes weaker.
  */
 public class Armour implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /** The name of the armour item (immutable after creation). */
+    // Name of the armour (does not change)
     private final String name;
 
-    /** Current durability of the armour (0–100). */
+    // Current durability (0–100)
     private int durability;
 
-    /** Base defense rating when durability is at 100%. */
+    // Base defense value
     private int defenseRating;
 
-    /**
-     * Constructs a new Armour object.
-     *
-     * @param name           the name of the armour
-     * @param durability     the starting durability (expected 0–100)
-     * @param defenseRating  the base defense rating at full durability
-     */
+    // Constructor to create a new piece of armour
     public Armour(String name, int durability, int defenseRating) {
         this.name = name;
         this.durability = durability;
         this.defenseRating = defenseRating;
     }
 
-    /**
-     * Reduces the durability of the armour by a given amount.
-     * If durability reaches 0 or below, the armour becomes unusable.
-     *
-     * @param reduction the amount of durability to subtract
-     */
+    // Reduces durability when the armour takes damage
     public void reduceDurability(int reduction) {
         durability -= reduction;
 
+        // If durability drops to 0 or below, armour is broken
         if (durability <= 0) {
             durability = 0;
             defenseRating = 0;
 
-            System.out.println("Your " + name + " has been rendered useless. "
-                    + "It cannot be repaired and must be sold for scraps.");
+            System.out.println("Your " + name + " is broken and useless now.");
         }
     }
 
-    /**
-     * Repairs the armour by increasing its durability.
-     * Durability is capped at a maximum of 100.
-     *
-     * @param amount the amount of durability to restore
-     */
+    // Repairs the armour by increasing durability
     public void repairArmour(int amount) {
+
+        // If it's already broken, do nothing
         if (durability == 0) {
-            // Optional design choice: prevent repairing destroyed armour
             return;
         }
 
         durability += amount;
 
+        // Cap durability at 100
         if (durability > 100) {
             durability = 100;
         }
     }
 
-    /**
-     * Calculates the effective defense rating based on current durability.
-     *
-     * @return the scaled defense rating
-     */
+    // Returns the defense value based on current durability
     public int getDefenseRating() {
         return (int) (defenseRating * (durability / 100.0));
     }
 
-    /**
-     * Returns a string representation of the armour.
-     *
-     * @return formatted string with armour details
-     */
+    // Prints a simple description of the armour
     @Override
     public String toString() {
-        return name + ", Defense Rating: " + getDefenseRating() + "\n";
+        return name + " (Defense: " + getDefenseRating() + ")";
     }
 }
