@@ -1,30 +1,47 @@
+/**
+ * Simple Mad Libs program.
+ *
+ * Fills in a story using predefined variables.
+ */
 public class MadLibs {
-  /*
-  This is Mad Libs.
-  */
-  	public static void main(String[] args){
 
-      String name1 = "Javac";
-      String name2 = "Malloc";
-      String adjective1 = "drowsy";
-      String adjective2 = "wild";
-      String adjective3 = "goofy";
-      String verb1 = "tack";
-      String noun1 = "rock";
-      String noun2 = "school";
-      String noun3 = "pen";
-      String noun4 = "jacket";
-      String noun5 = "pole";
-      String noun6 = "cat";
-      int number = 66;
-      String place1 = "Jabba's Palace";
+    public static void main(String[] args) {
 
+        // Names
+        String name1 = "Javac";
+        String name2 = "Malloc";
 
-      
-      
-      //The template for the story
-      String story = "This morning "+name1+" woke up feeling "+adjective1+". 'It is going to be a "+adjective2+" day!' Outside, a bunch of "+noun1+"s were protesting to keep "+noun2+" in stores. They began to "+verb1+" to the rhythm of the "+noun3+", which made all the "+noun4+"s very "+adjective3+". Concerned, "+name1+" texted "+name2+", who flew "+name1+" to "+place1+" and dropped "+name1+" in a puddle of frozen "+noun5+". "+name1+" woke up in the year "+number+", in a world where "+noun6+"s ruled the world.";
-    
-      System.out.println(story);
-    }       
+        // Adjectives
+        String adjective1 = "drowsy";
+        String adjective2 = "wild";
+        String adjective3 = "goofy";
+
+        // Verb
+        String verb1 = "tack";
+
+        // Nouns
+        String noun1 = "rock";
+        String noun2 = "school";
+        String noun3 = "pen";
+        String noun4 = "jacket";
+        String noun5 = "pole";
+        String noun6 = "cat";
+
+        // Other inputs
+        int number = 66;
+        String place1 = "Jabba's Palace";
+
+        // Build the story using the variables above
+        String story = "This morning " + name1 + " woke up feeling " + adjective1 + ". "
+                + "\"It is going to be a " + adjective2 + " day!\" "
+                + "Outside, a bunch of " + noun1 + "s were protesting to keep " + noun2 + " in stores. "
+                + "They began to " + verb1 + " to the rhythm of the " + noun3 + ", "
+                + "which made all the " + noun4 + "s very " + adjective3 + ". "
+                + "Concerned, " + name1 + " texted " + name2 + ", who flew " + name1 + " to " + place1
+                + " and dropped " + name1 + " in a puddle of frozen " + noun5 + ". "
+                + name1 + " woke up in the year " + number + ", in a world where " + noun6 + "s ruled the world.";
+
+        // Print the final story
+        System.out.println(story);
+    }
 }
