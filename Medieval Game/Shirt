@@ -1,25 +1,15 @@
 import java.io.Serializable;
 
 /**
- * Represents a shirt, a specific type of armour.
+ * This class represents a shirt.
  *
- * This class extends the Armour class without adding new functionality,
- * but provides a distinct type for chest armour. This allows for future
- * expansion, such as adding shirt-specific attributes, effects, or constraints.
- *
- * Implements Serializable to support saving and loading game state.
+ * It extends Armour, so it uses the same stats like durability and defense.
  */
 public class Shirt extends Armour implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * Constructs a new Shirt object.
-     *
-     * @param name           the name of the shirt
-     * @param durability     the starting durability (expected 0–100)
-     * @param defenseRating  the base defense rating at full durability
-     */
+    // Constructor for creating a shirt
     public Shirt(String name, int durability, int defenseRating) {
         super(name, durability, defenseRating);
     }
