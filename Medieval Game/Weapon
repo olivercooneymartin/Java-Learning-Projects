@@ -1,49 +1,33 @@
 /**
- * Represents a weapon used by the player.
+ * This class represents a weapon.
  *
- * A Weapon has a name and a fixed damage value. Unlike armour,
- * weapons do not degrade over time in the current design.
- *
- * This class is immutable once created.
+ * A weapon has a name and a damage value.
  */
 public class Weapon {
 
-    /** The name of the weapon (immutable). */
+    // Name of the weapon
     private final String name;
 
-    /** The base damage dealt by the weapon (immutable). */
+    // Damage the weapon does
     private final int damage;
 
-    /**
-     * Constructs a new Weapon object.
-     *
-     * @param name   the name of the weapon
-     * @param damage the damage value of the weapon
-     */
+    // Constructor for creating a weapon
     public Weapon(String name, int damage) {
         this.name = name;
         this.damage = damage;
     }
 
-    /**
-     * @return the name of the weapon
-     */
+    // Returns the weapon name
     public String getName() {
         return name;
     }
 
-    /**
-     * @return the damage value of the weapon
-     */
+    // Returns the damage value
     public int getDamage() {
         return damage;
     }
 
-    /**
-     * Returns a string representation of the weapon.
-     *
-     * @return formatted weapon information
-     */
+    // Prints weapon info
     @Override
     public String toString() {
         return name + " (Damage: " + damage + ")";
