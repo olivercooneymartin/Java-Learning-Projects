@@ -1,15 +1,24 @@
+/**
+ * Magic number program.
+ *
+ * Performs a series of operations on a number
+ * and always ends up with the same result.
+ */
 public class Magic {
-	public static void main(String[] args) {
-    int myNumber = 4;
-    // myNumber is the original number
-    int stepOne = myNumber * myNumber;
-    int stepTwo = stepOne + myNumber;
-    int stepThree = stepTwo / myNumber;
-    int stepFour = stepThree + 17;
-    int stepFive = stepFour - myNumber;
-    int stepSix = stepFive / 6;
 
-    System.out.println(stepSix);
-		
-	}
+    public static void main(String[] args) {
+
+        int myNumber = 4; // starting number
+
+        // Step-by-step operations
+        int stepOne = myNumber * myNumber;   // square the number
+        int stepTwo = stepOne + myNumber;    // add original number
+        int stepThree = stepTwo / myNumber;  // divide by original number
+        int stepFour = stepThree + 17;       // add 17
+        int stepFive = stepFour - myNumber;  // subtract original number
+        int stepSix = stepFive / 6;          // divide by 6
+
+        // Final result (should always be the same)
+        System.out.println(stepSix);
+    }
 }
