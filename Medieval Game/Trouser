@@ -1,26 +1,15 @@
 import java.io.Serializable;
 
 /**
- * Represents trousers, a specific type of armour.
+ * This class represents trousers.
  *
- * This class extends the Armour class without adding new functionality,
- * but serves as a distinct type for leg armour. This allows for future
- * expansion, such as movement penalties, agility modifiers, or other
- * leg-specific mechanics.
- *
- * Implements Serializable to support saving and loading game state.
+ * It extends Armour, so it has durability and defense like the other armour pieces.
  */
 public class Trouser extends Armour implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * Constructs a new Trouser object.
-     *
-     * @param name           the name of the trousers
-     * @param durability     the starting durability (expected 0–100)
-     * @param defenseRating  the base defense rating at full durability
-     */
+    // Constructor for creating trousers
     public Trouser(String name, int durability, int defenseRating) {
         super(name, durability, defenseRating);
     }
