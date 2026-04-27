@@ -1,23 +1,43 @@
-public class Art {
-  public static void homeScreen() {
-    System.out.println("\n\n");
-    System.out.print("   __                                                        __\n");
-    System.out.print("  |  |                                                      |  |\n");
-    System.out.print(" /----\\                 The Medieval Game                  /----\\\n");
-    System.out.print("[______]          A Test of Serialization Skills          [______]\n");
-    System.out.print(" |    |         _____                        _____         |    |\n");
-    System.out.print(" |[]  |        [     ]                      [     ]        |  []|\n");
-    System.out.print(" |    |       [_______][ ][ ][ ][][ ][ ][ ][_______]       |    |\n");
-    System.out.print(" |    [ ][ ][ ]|     |  ,----------------,  |     |[ ][ ][ ]    |\n");
-    System.out.print(" |             |     |/'    ____..____    '\\|     |             |\n");
-    System.out.print("  \\  []        |     |    /'    ||    '\\    |     |        []  /\n");
-    System.out.print("   |      []   |     |   |o     ||     o|   |     |  []       |\n");
-    System.out.print("   |           |  _  |   |     _||_     |   |  _  |           |\n");
-    System.out.print("   |   []      | (_) |   |    (_||_)    |   | (_) |       []  |\n");
-    System.out.print("   |           |     |   |     (||)     |   |     |           |\n");
-    System.out.print("   |           |     |   |      ||      |   |     |           |\n");
-    System.out.print(" /''           |     |   |o     ||     o|   |     |           ''\\\n");
-    System.out.print("[_____________[_______]--'------''------'--[_______]_____________]\n");
-    System.out.println("\n");
-  }
+/**
+ * Stores and displays ASCII art used by the game.
+ *
+ * This class currently provides the game's home screen artwork.
+ * The class is not intended to be instantiated, since it only contains
+ * static utility methods.
+ */
+public final class Art {
+
+    /**
+     * Private constructor to prevent instantiation of this utility class.
+     */
+    private Art() {
+        // Utility class
+    }
+
+    /**
+     * Displays the game's home screen ASCII art.
+     */
+    public static void homeScreen() {
+        System.out.println("""
+
+                   __                                                        __
+                  |  |                                                      |  |
+                 /----\\                 The Medieval Game                  /----\\
+                [______]          A Test of Serialization Skills          [______]
+                 |    |         _____                        _____         |    |
+                 |[]  |        [     ]                      [     ]        |  []|
+                 |    |       [_______][ ][ ][ ][][ ][ ][ ][_______]       |    |
+                 |    [ ][ ][ ]|     |  ,----------------,  |     |[ ][ ][ ]    |
+                 |             |     |/'    ____..____    '\\|     |             |
+                  \\  []        |     |    /'    ||    '\\    |     |        []  /
+                   |      []   |     |   |o     ||     o|   |     |  []       |
+                   |           |  _  |   |     _||_     |   |  _  |           |
+                   |   []      | (_) |   |    (_||_)    |   | (_) |       []  |
+                   |           |     |   |     (||)     |   |     |           |
+                   |           |     |   |      ||      |   |     |           |
+                 /''           |     |   |o     ||     o|   |     |           ''\\
+                [_____________[_______]--'------''------'--[_______]_____________]
+
+                """);
+    }
 }
